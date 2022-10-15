@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.locationweb.Entity.Location;
 import com.locationweb.Service.LocationService;
+import com.locationweb.util.EmailUtil;
 
 @Controller
 public class LocationController {
 	
 	@Autowired
 	LocationService theLocationService;
+	
+	@Autowired
+	EmailUtil theEmailUtil;
 
 	@RequestMapping("/createLocation")
 	public String showCreateLocation(Model m) {
@@ -63,5 +67,10 @@ public class LocationController {
 	 * msg = "Location updated with id"+updatedLocation.getId();
 	 * m.addAttribute("msg", msg); return "createLocation"; }
 	 */
+	
+	@RequestMapping("/sendEmail")
+	public void sendEmail() {
+		theEmailUtil.sendEmail("anmolshah.20k@gmail.com", "test", "test");
+	}
 	
 }
