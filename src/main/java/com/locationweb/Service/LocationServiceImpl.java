@@ -1,6 +1,7 @@
 package com.locationweb.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class LocationServiceImpl implements LocationService {
 	}
 
 	@Override
-	public Location getLocationById(int id) {
+	public Location getLocationById(int id) throws NoSuchElementException  {
 		Optional<Location> findByIdOptional = theLocationRepository.findById(id);
 		return findByIdOptional.get();
 	}
